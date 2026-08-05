@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-label="Mapa de ubicación (marcador de posición)">
+  <rect width="800" height="420" fill="#e9efe4" rx="18"/>
+  <g stroke="#c6d4bd" stroke-width="10" fill="none">
+    <path d="M-20 120 H820"/>
+    <path d="M-20 260 H820"/>
+    <path d="M180 -20 V440"/>
+    <path d="M420 -20 V440"/>
+    <path d="M640 -20 V440"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="4" fill="none">
+    <path d="M-20 120 H820"/>
+    <path d="M-20 260 H820"/>
+    <path d="M180 -20 V440"/>
+    <path d="M420 -20 V440"/>
+    <path d="M640 -20 V440"/>
+  </g>
+  <rect x="470" y="60" width="180" height="120" rx="10" fill="#cfe3c2"/>
+  <rect x="60" y="300" width="200" height="90" rx="10" fill="#cfe3c2"/>
+  <g transform="translate(400 190)">
+    <path d="M0 -46 a34 34 0 0 1 34 34 c0 26 -34 58 -34 58 s-34 -32 -34 -58 a34 34 0 0 1 34 -34z" fill="#88c425" stroke="#0d1f17" stroke-width="4"/>
+    <circle cx="0" cy="-12" r="12" fill="#0d1f17"/>
+  </g>
+  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#3d5248">Mapa interactivo en la versión final (Google Maps)</text>
+</svg>

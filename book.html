@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a bay — 24/7 Indoor Golf Club</title>
+  <meta name="description" content="Book a bay in our own booking system: member hours, guest bookings and your door code on confirmation. Demo - no online payments.">
+  <link rel="alternate" hreflang="en" href="book.html">
+  <link rel="alternate" hreflang="es" href="es/reservas.html">
+  <link rel="alternate" hreflang="x-default" href="book.html">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- DUMMY: aviso de demo; retirar en la versión final -->
+  <div class="dummy-banner"><strong>Demo</strong> — Preview site: prices and contact details are placeholders.</div>
+
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">24<em>/</em>7</span>
+        <span class="brand__sub">Indoor Golf Club</span>
+      </a>
+      <button class="burger" aria-expanded="false" aria-controls="main-nav">
+        <span class="visually-hidden">Open menu</span>
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="membership.html">Membership</a></li>
+          <li><a class="nav__link" href="events.html">Events</a></li>
+          <li><a class="nav__link" href="business.html">Business</a></li>
+          <li><a class="nav__link" href="faqs.html">FAQs</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+          <li><a class="nav__link" href="account.html">My account</a></li>
+          <li class="nav__lang"><a class="lang-switch" href="es/reservas.html" title="Versión en español" hreflang="es">ES</a></li>
+          <li class="nav__cta"><a class="btn btn--primary btn--block" href="book.html" aria-current="page">Book a bay</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header__book" href="book.html">Book a bay</a>
+    </div>
+  </header>
+
+  <main id="content">
+
+    <section class="page-head">
+      <div class="container">
+        <p class="kicker">Booking</p>
+        <h1 class="page-head__title">Book your bay</h1>
+        <p class="page-head__lead">Pick a day, time and bay below. Members play with their included hours; guests pay at the club on arrival. Every confirmed booking generates your personal door code &mdash; the club is yours, 24/7.</p>
+      </div>
+    </section>
+
+    <section class="section section--dark" style="padding-top:2.5rem">
+      <div class="container">
+        <div id="booking-demo">
+          <div class="demo-toolbar">
+            <fieldset>
+              <legend>Day</legend>
+              <div data-days style="display:flex;flex-wrap:wrap;gap:0.5rem"></div>
+            </fieldset>
+            <p class="member-hours" data-session></p>
+          </div>
+
+          <div class="tee-wrap">
+            <div class="tee-sheet" data-sheet role="grid" aria-label="Availability by bay and hour"></div>
+          </div>
+          <p class="demo-legend">
+            <span><span class="demo-legend__dot" style="background:var(--c-bg-panel);border:1px solid var(--c-line-dark)"></span>Off-peak</span>
+            <span><span class="demo-legend__dot" style="background:var(--c-bg-panel-2);border:1px solid var(--c-line-dark)"></span>Peak</span>
+            <span><span class="demo-legend__dot" style="background:transparent;border:1px dashed var(--c-line-dark)"></span>Booked</span>
+            <span><span class="demo-legend__dot" style="background:var(--c-accent)"></span>Selected</span>
+          </p>
+
+          <div class="demo-panel">
+            <h2 class="card__title">Your selection</h2>
+            <div data-summary></div>
+            <p style="margin-top:1rem"><button type="button" class="btn btn--primary" data-confirm hidden>Confirm booking</button></p>
+            <div class="demo-confirmation" data-confirmation hidden tabindex="-1"></div>
+            <p class="form__note" data-status role="status"></p>
+          </div>
+
+          <div class="demo-panel">
+            <h2 class="card__title">My bookings</h2>
+            <ul class="demo-bookings" data-list></ul>
+            <p style="margin-top:1.25rem"><a class="btn btn--ghost btn--small" href="account.html">Manage everything in My account</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light">
+      <div class="container">
+        <p class="kicker">How payment works</p>
+        <h2 class="section__title">Money moves at the club, the system tracks everything</h2>
+        <div class="grid grid--3" style="margin-top:2rem">
+          <article class="card">
+            <h3 class="card__title">Members &amp; hour packs first</h3>
+            <p class="card__text">Membership fees and hour packs are paid at the club or by Zelle/transfer. Booking simply spends hours you already own.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Guests pay on arrival</h3>
+            <p class="card__text">Guests book instantly and pay at the club. No-show protection: one active booking per guest, email confirmation and a strike policy.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Door code per booking</h3>
+            <p class="card__text">Every confirmed booking generates a temporary access code linked to your time slot &mdash; 24/7 access with no staff needed.</p>
+          </article>
+        </div>
+        <p style="margin-top:2rem" class="form__note">Demo version: availability is fictitious and lives in your browser. <a href="account.html">Create your demo account</a> to try member pricing.</p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <p class="kicker">Before you come</p>
+        <h2 class="section__title">House rules</h2>
+        <div class="grid grid--3" style="margin-top:2rem">
+          <article class="card">
+            <h3 class="card__title">Arrive on time</h3>
+            <p class="card__text">Your digital access works only during your slot. Arrive a few minutes ahead so you're ready to play from the first minute.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Clean clubs</h3>
+            <p class="card__text">To protect screens and mats, give your clubs a good clean before playing. Spotless loaner clubs are always available.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">24-hour cancellation</h3>
+            <p class="card__text">Free cancellation and changes up to 24 hours before, from this page or My account. Included hours go straight back to your balance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="container">
+        <h2 class="section__title">Playing every week?</h2>
+        <p class="section__lead" style="margin-inline:auto">Membership gets you included hours, member rates and priority booking from $29/month.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary btn--lg" href="membership.html#tiers">See memberships</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="brand" href="index.html" style="margin-bottom:1rem">
+            <span class="brand__mark" style="color:var(--c-paper)">24<em>/</em>7</span>
+            <span class="brand__sub">Indoor Golf Club</span>
+          </a>
+          <p>Indoor golf on next-generation simulators, open 24/7. Book online and let yourself in with your phone.</p>
+        </div>
+        <div>
+          <h3 class="footer__title">The club</h3>
+          <ul class="footer__list">
+            <li><a href="index.html#how-it-works">How it works</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="business.html">Business</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="book.html">Book a bay</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__title">Contact</h3>
+          <ul class="footer__list">
+            <!-- DUMMY: datos de contacto ficticios -->
+            <li>📍 1219 Fairway Ave, Suite 210, Austin, TX 78701</li>
+            <li>📞 <a href="tel:+15125550119">+1 (512) 555-0119</a></li>
+            <li>✉️ <a href="mailto:hello@247indoorgolf.example">hello@247indoorgolf.example</a></li>
+            <li>🕛 Open 24/7, 365 days</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__title">Follow us</h3>
+          <ul class="footer__list">
+            <li><a href="#" title="Link pending">Instagram</a></li>
+            <li><a href="#" title="Link pending">TikTok</a></li>
+            <li><a href="#" title="Link pending">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <p>© <span data-year>2026</span> 24/7 Indoor Golf Club (demo). All rights reserved.</p>
+        <p>
+          <a href="#" title="Link pending">Legal notice</a> ·
+          <a href="#" title="Link pending">Privacy</a> ·
+          <a href="#" title="Link pending">Cookies</a> ·
+          <a href="#" title="Link pending">Cancellation policy</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/demo-core.js" defer></script>
+  <script src="assets/js/booking-demo.js" defer></script>
+</body>
+</html>

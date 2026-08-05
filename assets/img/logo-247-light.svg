@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="24/7 Indoor Golf Club">
+  <!-- Recreación provisional del logo (versión para fondos claros). Sustituir por el archivo original del cliente. -->
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="900" font-style="italic">
+    <text x="88" y="204" font-size="185" letter-spacing="-10" fill="#0b0b0b">24</text>
+    <text x="422" y="204" font-size="185" fill="#0b0b0b">7</text>
+  </g>
+  <polygon points="366,214 404,214 468,44 430,44" fill="#2eb05c"/>
+  <text x="320" y="286" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="41" letter-spacing="13" text-anchor="middle" fill="#0b0b0b">INDOOR GOLF CLUB</text>
+</svg>

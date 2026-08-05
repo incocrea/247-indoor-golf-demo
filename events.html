@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events, leagues & tournaments — 24/7 Indoor Golf Club</title>
+  <meta name="description" content="Night leagues, monthly tournaments and private celebrations at our indoor golf club. Request a quote for your event.">
+  <link rel="alternate" hreflang="en" href="events.html">
+  <link rel="alternate" hreflang="es" href="es/eventos.html">
+  <link rel="alternate" hreflang="x-default" href="events.html">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- DUMMY: aviso de demo; retirar en la versión final -->
+  <div class="dummy-banner"><strong>Demo</strong> — Preview site: prices and contact details are placeholders.</div>
+
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">24<em>/</em>7</span>
+        <span class="brand__sub">Indoor Golf Club</span>
+      </a>
+      <button class="burger" aria-expanded="false" aria-controls="main-nav">
+        <span class="visually-hidden">Open menu</span>
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="membership.html">Membership</a></li>
+          <li><a class="nav__link" href="events.html" aria-current="page">Events</a></li>
+          <li><a class="nav__link" href="business.html">Business</a></li>
+          <li><a class="nav__link" href="faqs.html">FAQs</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+          <li><a class="nav__link" href="account.html">My account</a></li>
+          <li class="nav__lang"><a class="lang-switch" href="es/eventos.html" title="Versión en español" hreflang="es">ES</a></li>
+          <li class="nav__cta"><a class="btn btn--primary btn--block" href="book.html">Book a bay</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header__book" href="book.html">Book a bay</a>
+    </div>
+  </header>
+
+  <main id="content">
+
+    <section class="page-head">
+      <div class="container">
+        <p class="kicker">Events</p>
+        <h1 class="page-head__title">Compete, celebrate, share</h1>
+        <p class="page-head__lead">Indoor golf is even better in company: weekly leagues, monthly tournaments and private events made to measure.</p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <div class="grid grid--3">
+          <!-- DUMMY: datos ficticios -->
+          <article class="card">
+            <h2 class="card__title">Night league</h2>
+            <p class="card__text">Teams of 2–4, one match a week for 8 weeks. Live leaderboard, a different course every round and a grand final with prizes.</p>
+            <ul class="price-card__list" style="margin-top:1rem">
+              <li>Thursdays, 8 pm – 11 pm</li>
+              <li>$120 per team per season</li>
+              <li>All levels — simulator handicap</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h2 class="card__title">Monthly tournaments</h2>
+            <p class="card__text">One Saturday a month: 9-hole stroke play plus longest-drive and closest-to-the-pin contests. Gross and handicap prizes.</p>
+            <ul class="price-card__list" style="margin-top:1rem">
+              <li>Entry $15 (members $10)</li>
+              <li>Surprise course every edition</li>
+              <li>Club annual ranking</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h2 class="card__title">Birthdays &amp; celebrations</h2>
+            <p class="card__text">The club exclusively for your crew: game formats everyone can play, music to your taste and optional catering.</p>
+            <ul class="price-card__list" style="margin-top:1rem">
+              <li>Packages from $250 (2 h, up to 16 people)</li>
+              <li>Optional catering and drinks</li>
+              <li>Any day of the week</li>
+            </ul>
+          </article>
+        </div>
+        <p style="margin-top:2rem">Planning a team or client event? Visit our <a href="business.html">business page</a>.</p>
+      </div>
+    </section>
+
+    <section class="section section--light">
+      <div class="container">
+        <p class="kicker">Tell us your plan</p>
+        <h2 class="section__title">Request a quote</h2>
+        <p class="section__lead">Fill in the form and we'll get back to you within one working day.</p>
+        <form class="form" data-dummy>
+          <label>Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>Type of event
+            <select name="type" required>
+              <option value="">Choose an option…</option>
+              <option>Night league</option>
+              <option>Monthly tournament</option>
+              <option>Birthday or celebration</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Tell us more (approximate date, number of people…)
+            <textarea name="message"></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit">Send request</button>
+          <p class="form__note form__feedback" role="status"></p>
+          <p class="form__note">Demo form: the final version will be connected to the club's email.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="container">
+        <h2 class="section__title">Want to try first?</h2>
+        <p class="section__lead" style="margin-inline:auto">Book a bay with your friends and live the experience before joining the league.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary btn--lg" href="book.html">Book a bay</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="brand" href="index.html" style="margin-bottom:1rem">
+            <span class="brand__mark" style="color:var(--c-paper)">24<em>/</em>7</span>
+            <span class="brand__sub">Indoor Golf Club</span>
+          </a>
+          <p>Indoor golf on next-generation simulators, open 24/7. Book online and let yourself in with your phone.</p>
+        </div>
+        <div>
+          <h3 class="footer__title">The club</h3>
+          <ul class="footer__list">
+            <li><a href="index.html#how-it-works">How it works</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="business.html">Business</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="book.html">Book a bay</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__title">Contact</h3>
+          <ul class="footer__list">
+            <!-- DUMMY: datos de contacto ficticios -->
+            <li>📍 1219 Fairway Ave, Suite 210, Austin, TX 78701</li>
+            <li>📞 <a href="tel:+15125550119">+1 (512) 555-0119</a></li>
+            <li>✉️ <a href="mailto:hello@247indoorgolf.example">hello@247indoorgolf.example</a></li>
+            <li>🕛 Open 24/7, 365 days</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__title">Follow us</h3>
+          <ul class="footer__list">
+            <li><a href="#" title="Link pending">Instagram</a></li>
+            <li><a href="#" title="Link pending">TikTok</a></li>
+            <li><a href="#" title="Link pending">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <p>© <span data-year>2026</span> 24/7 Indoor Golf Club (demo). All rights reserved.</p>
+        <p>
+          <a href="#" title="Link pending">Legal notice</a> ·
+          <a href="#" title="Link pending">Privacy</a> ·
+          <a href="#" title="Link pending">Cookies</a> ·
+          <a href="#" title="Link pending">Cancellation policy</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
