@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reservar bahía — 24/7 Indoor Golf Club</title>
-  <meta name="description" content="Reserva bahía en nuestro propio sistema: horas de socio, reservas de invitado y tu código de puerta al confirmar. Demo - sin pagos online.">
+  <meta name="description" content="Elige día, hora y bahía, paga online y entra con tu móvil. Las reservas y membresías se gestionan en Albaplay.">
   <link rel="alternate" hreflang="en" href="../book.html">
   <link rel="alternate" hreflang="es" href="reservas.html">
   <link rel="alternate" hreflang="x-default" href="../book.html">
@@ -42,7 +42,6 @@
           <li><a class="nav__link" href="empresas.html">Empresas</a></li>
           <li><a class="nav__link" href="faqs.html">FAQs</a></li>
           <li><a class="nav__link" href="contacto.html">Contacto</a></li>
-          <li><a class="nav__link" href="cuenta.html">Mi cuenta</a></li>
           <li class="nav__lang"><a class="lang-switch" href="../book.html" title="English version" hreflang="en">EN</a></li>
           <li class="nav__cta"><a class="btn btn--primary btn--block" href="reservas.html" aria-current="page">Reservar bahía</a></li>
         </ul>
@@ -57,67 +56,44 @@
       <div class="container">
         <p class="kicker">Reservas</p>
         <h1 class="page-head__title">Reserva tu bahía</h1>
-        <p class="page-head__lead">Elige día, hora y bahía aquí abajo. Los socios juegan con sus horas incluidas; los invitados pagan en el club al llegar. Cada reserva confirmada genera tu código de puerta personal &mdash; el club es tuyo, 24/7.</p>
+        <p class="page-head__lead">Elige día, hora y bahía, paga online de forma segura y entra con tu móvil a la hora reservada. Las reservas y membresías se gestionan en Albaplay, nuestra plataforma de reservas.</p>
       </div>
     </section>
 
     <section class="section section--dark" style="padding-top:2.5rem">
       <div class="container">
-        <div id="booking-demo">
-          <div class="demo-toolbar">
-            <fieldset>
-              <legend>Día</legend>
-              <div data-days style="display:flex;flex-wrap:wrap;gap:0.5rem"></div>
-            </fieldset>
-            <p class="member-hours" data-session></p>
-          </div>
-
-          <div class="tee-wrap">
-            <div class="tee-sheet" data-sheet role="grid" aria-label="Disponibilidad por bahía y hora"></div>
-          </div>
-          <p class="demo-legend">
-            <span><span class="demo-legend__dot" style="background:var(--c-bg-panel);border:1px solid var(--c-line-dark)"></span>Hora valle</span>
-            <span><span class="demo-legend__dot" style="background:var(--c-bg-panel-2);border:1px solid var(--c-line-dark)"></span>Hora punta</span>
-            <span><span class="demo-legend__dot" style="background:transparent;border:1px dashed var(--c-line-dark)"></span>Ocupado</span>
-            <span><span class="demo-legend__dot" style="background:var(--c-accent)"></span>Seleccionado</span>
-          </p>
-
-          <div class="demo-panel">
-            <h2 class="card__title">Tu selección</h2>
-            <div data-summary></div>
-            <p style="margin-top:1rem"><button type="button" class="btn btn--primary" data-confirm hidden>Confirmar reserva</button></p>
-            <div class="demo-confirmation" data-confirmation hidden tabindex="-1"></div>
-            <p class="form__note" data-status role="status"></p>
-          </div>
-
-          <div class="demo-panel">
-            <h2 class="card__title">Mis reservas</h2>
-            <ul class="demo-bookings" data-list></ul>
-            <p style="margin-top:1.25rem"><a class="btn btn--ghost btn--small" href="cuenta.html">Gestiónalo todo en Mi cuenta</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--light">
-      <div class="container">
-        <p class="kicker">Cómo funciona el pago</p>
-        <h2 class="section__title">El dinero se mueve en el club; el sistema controla todo lo demás</h2>
-        <div class="grid grid--3" style="margin-top:2rem">
+        <div class="grid grid--2">
           <article class="card">
-            <h3 class="card__title">Socios y bonos primero</h3>
-            <p class="card__text">Las cuotas y los bonos de horas se pagan en el club o por Zelle/transferencia. Reservar solo consume horas que ya son tuyas.</p>
+            <h2 class="card__title">Jugadores</h2>
+            <p class="card__text">Reserva por horas sin necesidad de ser socio. Hasta 4 jugadores por bahía, palos de préstamo incluidos.</p>
+            <p style="margin-top:1.25rem">
+              <!-- DUMMY: sustituir por https://albaplay.com/es/venue/{slug-del-club} cuando Alba asigne el slug -->
+              <a class="btn btn--primary" href="https://albaplay.com/en" target="_blank" rel="noopener">Reservar como jugador</a>
+            </p>
           </article>
           <article class="card">
-            <h3 class="card__title">Los invitados pagan al llegar</h3>
-            <p class="card__text">El invitado reserva al momento y paga en el club. Protección anti no-show: una reserva activa por invitado, confirmación por email y política de strikes.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Código de puerta por reserva</h3>
-            <p class="card__text">Cada reserva confirmada genera un código de acceso temporal ligado a tu franja &mdash; acceso 24/7 sin necesidad de personal.</p>
+            <h2 class="card__title">Socios</h2>
+            <p class="card__text">Accede con tu cuenta de socio para usar tus horas incluidas, tu tarifa reducida y la reserva prioritaria.</p>
+            <p style="margin-top:1.25rem">
+              <!-- DUMMY: sustituir por https://albaplay.com/es/venue/{slug-del-club} (los socios inician sesion en la misma pagina) -->
+              <a class="btn btn--ghost" href="https://albaplay.com/en" target="_blank" rel="noopener">Acceso socios</a>
+            </p>
           </article>
         </div>
-        <p style="margin-top:2rem" class="form__note">Versión demo: la disponibilidad es ficticia y vive en tu navegador. <a href="cuenta.html">Crea tu cuenta de demostración</a> para probar los precios de socio.</p>
+
+        <div style="margin-top:2.5rem">
+          <div class="booking-embed">
+            <span class="booking-embed__badge">Enlace definitivo pendiente</span>
+            <h2 class="card__title">Reserva online con Albaplay</h2>
+            <p class="card__text" style="max-width:38rem;margin-inline:auto">
+              Nuestro calendario de reservas en tiempo real &mdash; disponibilidad por bahía, pago
+              online seguro (tarjeta, Apple&nbsp;Pay y Google&nbsp;Pay) y confirmación al momento con tu
+              llave digital de la puerta &mdash; funciona sobre la plataforma Albaplay. En cuanto el club
+              esté dado de alta, los botones de esta página te llevarán directamente a nuestra
+              página oficial de reservas, personalizada con nuestra marca.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -136,7 +112,7 @@
           </article>
           <article class="card">
             <h3 class="card__title">Cancela con 24 h</h3>
-            <p class="card__text">Cancelación y cambios gratuitos hasta 24 horas antes, desde esta página o desde Mi cuenta. Las horas incluidas vuelven directas a tu saldo.</p>
+            <p class="card__text">Cancelación y cambios gratuitos hasta 24 horas antes desde tu correo de confirmación. Las horas incluidas vuelven directas a tu saldo.</p>
           </article>
         </div>
       </div>
@@ -206,7 +182,5 @@
   </footer>
 
   <script src="../assets/js/main.js" defer></script>
-  <script src="../assets/js/demo-core.js" defer></script>
-  <script src="../assets/js/booking-demo.js" defer></script>
 </body>
 </html>

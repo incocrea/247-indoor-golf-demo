@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Book a bay — 24/7 Indoor Golf Club</title>
-  <meta name="description" content="Book a bay in our own booking system: member hours, guest bookings and your door code on confirmation. Demo - no online payments.">
+  <meta name="description" content="Choose a day, time and bay, pay online and let yourself in with your phone. Bookings and memberships are managed on Albaplay.">
   <link rel="alternate" hreflang="en" href="book.html">
   <link rel="alternate" hreflang="es" href="es/reservas.html">
   <link rel="alternate" hreflang="x-default" href="book.html">
@@ -42,7 +42,6 @@
           <li><a class="nav__link" href="business.html">Business</a></li>
           <li><a class="nav__link" href="faqs.html">FAQs</a></li>
           <li><a class="nav__link" href="contact.html">Contact</a></li>
-          <li><a class="nav__link" href="account.html">My account</a></li>
           <li class="nav__lang"><a class="lang-switch" href="es/reservas.html" title="Versión en español" hreflang="es">ES</a></li>
           <li class="nav__cta"><a class="btn btn--primary btn--block" href="book.html" aria-current="page">Book a bay</a></li>
         </ul>
@@ -57,67 +56,43 @@
       <div class="container">
         <p class="kicker">Booking</p>
         <h1 class="page-head__title">Book your bay</h1>
-        <p class="page-head__lead">Pick a day, time and bay below. Members play with their included hours; guests pay at the club on arrival. Every confirmed booking generates your personal door code &mdash; the club is yours, 24/7.</p>
+        <p class="page-head__lead">Pick a day, time and bay, pay securely online and let yourself in with your phone at your booked time. Bookings and memberships are managed on Albaplay, our booking platform.</p>
       </div>
     </section>
 
     <section class="section section--dark" style="padding-top:2.5rem">
       <div class="container">
-        <div id="booking-demo">
-          <div class="demo-toolbar">
-            <fieldset>
-              <legend>Day</legend>
-              <div data-days style="display:flex;flex-wrap:wrap;gap:0.5rem"></div>
-            </fieldset>
-            <p class="member-hours" data-session></p>
-          </div>
-
-          <div class="tee-wrap">
-            <div class="tee-sheet" data-sheet role="grid" aria-label="Availability by bay and hour"></div>
-          </div>
-          <p class="demo-legend">
-            <span><span class="demo-legend__dot" style="background:var(--c-bg-panel);border:1px solid var(--c-line-dark)"></span>Off-peak</span>
-            <span><span class="demo-legend__dot" style="background:var(--c-bg-panel-2);border:1px solid var(--c-line-dark)"></span>Peak</span>
-            <span><span class="demo-legend__dot" style="background:transparent;border:1px dashed var(--c-line-dark)"></span>Booked</span>
-            <span><span class="demo-legend__dot" style="background:var(--c-accent)"></span>Selected</span>
-          </p>
-
-          <div class="demo-panel">
-            <h2 class="card__title">Your selection</h2>
-            <div data-summary></div>
-            <p style="margin-top:1rem"><button type="button" class="btn btn--primary" data-confirm hidden>Confirm booking</button></p>
-            <div class="demo-confirmation" data-confirmation hidden tabindex="-1"></div>
-            <p class="form__note" data-status role="status"></p>
-          </div>
-
-          <div class="demo-panel">
-            <h2 class="card__title">My bookings</h2>
-            <ul class="demo-bookings" data-list></ul>
-            <p style="margin-top:1.25rem"><a class="btn btn--ghost btn--small" href="account.html">Manage everything in My account</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--light">
-      <div class="container">
-        <p class="kicker">How payment works</p>
-        <h2 class="section__title">Money moves at the club, the system tracks everything</h2>
-        <div class="grid grid--3" style="margin-top:2rem">
+        <div class="grid grid--2">
           <article class="card">
-            <h3 class="card__title">Members &amp; hour packs first</h3>
-            <p class="card__text">Membership fees and hour packs are paid at the club or by Zelle/transfer. Booking simply spends hours you already own.</p>
+            <h2 class="card__title">Players</h2>
+            <p class="card__text">Book by the hour &mdash; no membership needed. Up to 4 players per bay, loaner clubs included.</p>
+            <p style="margin-top:1.25rem">
+              <!-- DUMMY: sustituir por https://albaplay.com/en/venue/{slug-del-club} cuando Alba asigne el slug -->
+              <a class="btn btn--primary" href="https://albaplay.com/en" target="_blank" rel="noopener">Book as a player</a>
+            </p>
           </article>
           <article class="card">
-            <h3 class="card__title">Guests pay on arrival</h3>
-            <p class="card__text">Guests book instantly and pay at the club. No-show protection: one active booking per guest, email confirmation and a strike policy.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Door code per booking</h3>
-            <p class="card__text">Every confirmed booking generates a temporary access code linked to your time slot &mdash; 24/7 access with no staff needed.</p>
+            <h2 class="card__title">Members</h2>
+            <p class="card__text">Sign in to your member account to use your included hours, member rates and priority booking.</p>
+            <p style="margin-top:1.25rem">
+              <!-- DUMMY: sustituir por https://albaplay.com/en/venue/{slug-del-club} (los socios inician sesion en la misma pagina) -->
+              <a class="btn btn--ghost" href="https://albaplay.com/en" target="_blank" rel="noopener">Member sign-in</a>
+            </p>
           </article>
         </div>
-        <p style="margin-top:2rem" class="form__note">Demo version: availability is fictitious and lives in your browser. <a href="account.html">Create your demo account</a> to try member pricing.</p>
+
+        <div style="margin-top:2.5rem">
+          <div class="booking-embed">
+            <span class="booking-embed__badge">Final link pending</span>
+            <h2 class="card__title">Online booking, powered by Albaplay</h2>
+            <p class="card__text" style="max-width:38rem;margin-inline:auto">
+              Our real-time booking calendar &mdash; bay availability, secure online payment
+              (card, Apple&nbsp;Pay and Google&nbsp;Pay) and instant confirmation with your digital
+              door key &mdash; runs on the Albaplay platform. Once the club goes live, the buttons
+              on this page will take you straight to our official booking page, branded with our identity.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -136,7 +111,7 @@
           </article>
           <article class="card">
             <h3 class="card__title">24-hour cancellation</h3>
-            <p class="card__text">Free cancellation and changes up to 24 hours before, from this page or My account. Included hours go straight back to your balance.</p>
+            <p class="card__text">Free cancellation and changes up to 24 hours before, from your confirmation email. Included hours go straight back to your balance.</p>
           </article>
         </div>
       </div>
@@ -206,7 +181,5 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/demo-core.js" defer></script>
-  <script src="assets/js/booking-demo.js" defer></script>
 </body>
 </html>
