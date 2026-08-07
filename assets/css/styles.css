@@ -1,5 +1,5 @@
 /* ============================================================
-   Hoyo 19 Indoor Golf — hoja de estilos principal
+   24/7 Indoor Golf Club — hoja de estilos principal
    Mobile-first. Tokens de diseño en :root.
    ============================================================ */
 
@@ -356,7 +356,7 @@ a { color: inherit; }
   align-items: center;
   min-height: min(88vh, 46rem);
   background:
-    radial-gradient(60rem 30rem at 85% -10%, rgba(136, 196, 37, 0.22), transparent 60%),
+    radial-gradient(60rem 30rem at 85% -10%, rgba(0, 191, 99, 0.20), transparent 60%),
     linear-gradient(160deg, #0d1f17 0%, #10281c 55%, #0a1811 100%);
   color: var(--c-paper);
   overflow: hidden;
@@ -628,7 +628,7 @@ a { color: inherit; }
 /* ---------- Franja CTA ---------- */
 .cta-band {
   background:
-    radial-gradient(40rem 20rem at 15% 120%, rgba(136, 196, 37, 0.25), transparent 60%),
+    radial-gradient(40rem 20rem at 15% 120%, rgba(0, 191, 99, 0.22), transparent 60%),
     var(--c-bg-dark);
   color: var(--c-paper);
   text-align: center;
@@ -645,7 +645,7 @@ a { color: inherit; }
 /* ---------- Página interior: cabecera ---------- */
 .page-head {
   background:
-    radial-gradient(50rem 25rem at 80% -20%, rgba(136, 196, 37, 0.18), transparent 60%),
+    radial-gradient(50rem 25rem at 80% -20%, rgba(0, 191, 99, 0.16), transparent 60%),
     var(--c-bg-dark);
   color: var(--c-paper);
   padding-block: clamp(3.5rem, 9vw, 5.5rem);
@@ -1001,7 +1001,7 @@ button.shot:hover {
   transform: translateY(-6px);
   border-color: var(--c-accent);
   box-shadow: 0 32px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--c-accent),
-              0 0 40px rgba(46, 176, 92, 0.28);
+              0 0 40px rgba(0, 191, 99, 0.30);
 }
 a.shot:hover::after,
 button.shot:hover::after { opacity: 0.35; }
@@ -1098,37 +1098,26 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   .feature-row--flip > .feature-row__media { order: -1; }
 }
 
-/* --- Banda full-bleed con parallax --- */
+/* --- Banda destacada a sangre completa (sin foto: solo marca) --- */
 .parallax-band {
   position: relative;
   overflow: hidden;
-  min-height: clamp(20rem, 46vw, 30rem);
+  min-height: clamp(17rem, 36vw, 24rem);
   display: flex;
   align-items: center;
   isolation: isolate;
+  background:
+    radial-gradient(48rem 26rem at 84% 6%, rgba(0, 191, 99, 0.17), transparent 62%),
+    linear-gradient(150deg, #101f19 0%, var(--c-bg-dark) 55%, #08110d 100%);
 }
-.parallax-band__media {
-  position: absolute;
-  top: -18%;
-  left: 0;
-  width: 100%;
-  height: 136%;
-  z-index: -2;
-  background-position: center 45%;
-  background-size: cover;
-  /* translate3d ya promociona a capa del compositor; will-change reservaría
-     memoria de GPU durante toda la vida de la página sin ganancia. */
-  transform: translate3d(0, 0, 0);
-}
-.parallax-band__scrim {
+.parallax-band__pattern {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* Velo reforzado: la foto tiene paneles de interfaz claros que, sin él,
-     dejaban el texto por debajo del mínimo legible. */
-  background:
-    linear-gradient(90deg, rgba(12, 21, 18, 0.95) 0%, rgba(12, 21, 18, 0.9) 50%, rgba(12, 21, 18, 0.82) 100%),
-    linear-gradient(to bottom, rgba(12, 21, 18, 0.92), rgba(12, 21, 18, 0.35) 40%, rgba(12, 21, 18, 0.92));
+  background-image: url("../img/pattern-fairway.svg");
+  background-size: 420px;
+  opacity: 0.14;
+  pointer-events: none;
 }
 /* La banda es OSCURA: sin esto hereda los colores pensados para fondo claro
    (--c-ink sobre casi negro = ilegible). */
@@ -1189,23 +1178,10 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
 }
 .lightbox__close:hover { border-color: var(--c-accent); color: var(--c-accent-soft); }
 
-/* En pantallas anchas las capturas de fondo (756 px de origen) se amplían mucho:
-   un desenfoque leve hace que la blandura se lea como profundidad de campo
-   intencionada. El margen extra evita que se vean los bordes difuminados. */
-@media (min-width: 60rem) {
-  .hero__media,
-  .parallax-band__media {
-    left: -2%;
-    width: 104%;
-    filter: blur(2px);
-  }
-}
-
 /* --- Sin animaciones si el usuario las desactiva --- */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero__media,
-  .parallax-band__media { transform: none !important; }
+  .hero__media { transform: none !important; }
   .shot { transition: none; }
 }
 
