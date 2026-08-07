@@ -1277,6 +1277,29 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   color: var(--c-accent-ink);
   font-weight: 600;
 }
+.terms-langbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin: 0 0 0.6rem;
+  font-size: var(--fs-small);
+  color: var(--c-paper-soft);
+}
+.terms-langbtn {
+  font: inherit;
+  font-size: var(--fs-small);
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--c-accent-soft);
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.terms-langbtn:hover { color: var(--c-paper); }
+
 .terms-body {
   flex: 1;
   min-height: 8rem;

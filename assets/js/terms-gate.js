@@ -19,6 +19,9 @@
         accept: "Aceptar y continuar",
         close: "Cerrar",
         accepted: "Aceptados el ",
+        courtesy: "Traducción de cortesía. En caso de discrepancia prevalece la versión original en inglés.",
+        toEnglish: "Ver original en inglés",
+        toSpanish: "Ver en español",
       }
     : {
         title: "Terms and conditions of use",
@@ -27,7 +30,23 @@
         accept: "Accept and continue",
         close: "Close",
         accepted: "Accepted on ",
+        /* El aviso va siempre en español: advierte sobre la propia traducción. */
+        courtesy: "Traducción de cortesía. En caso de discrepancia prevalece la versión original en inglés.",
+        toEnglish: "View original in English",
+        toSpanish: "Ver en español",
       };
+
+  /* Idioma en que se muestran los documentos: el de la página, conmutable dentro
+     del modal. La versión inglesa es siempre la que prevalece jurídicamente. */
+  var docLang = ES ? "es" : "en";
+
+  function docHtml(doc) {
+    if (typeof doc.html === "string") return doc.html;          // formato antiguo
+    return doc.html[docLang] || doc.html.en || "";
+  }
+  function hasSpanish(doc) {
+    return typeof doc.html === "object" && !!doc.html.es;
+  }
 
   function isAccepted() {
     try { return !!JSON.parse(localStorage.getItem(KEY)); } catch (e) { return false; }
@@ -61,6 +80,8 @@
       "<button type='button' class='terms-close' aria-label='" + T.close + "'>×</button></div>" +
       "<p class='terms-intro'>" + T.intro + "</p>" +
       "<div class='terms-tabs' role='tablist'>" + tabs + "</div>" +
+      "<p class='terms-langbar'><span data-courtesy></span>" +
+      "<button type='button' class='terms-langbtn' data-doclang hidden></button></p>" +
       "<div class='terms-body' tabindex='0'></div>" +
       (accepted
         ? acceptedInfo
@@ -74,16 +95,35 @@
     var modal = overlay.querySelector(".terms-modal");
     var body = overlay.querySelector(".terms-body");
 
+    var currentTab = activeTab;
+    var courtesyEl = overlay.querySelector("[data-courtesy]");
+    var langBtn = overlay.querySelector("[data-doclang]");
+
     function showTab(id) {
+      currentTab = id;
       var doc = window.TERMS247.docs.filter(function (d) { return d.id === id; })[0] || window.TERMS247.docs[0];
-      body.innerHTML = doc.html;
+      body.innerHTML = docHtml(doc);
       body.scrollTop = 0;
+      body.setAttribute("lang", docLang);
       overlay.querySelectorAll(".terms-tab").forEach(function (t) {
         t.setAttribute("aria-selected", t.getAttribute("data-tab") === doc.id ? "true" : "false");
       });
+      /* aviso de traducción y conmutador de idioma del documento */
+      if (hasSpanish(doc)) {
+        langBtn.hidden = false;
+        langBtn.textContent = docLang === "es" ? T.toEnglish : T.toSpanish;
+        courtesyEl.textContent = docLang === "es" ? T.courtesy : "";
+      } else {
+        langBtn.hidden = true;
+        courtesyEl.textContent = "";
+      }
     }
     overlay.querySelectorAll(".terms-tab").forEach(function (t) {
       t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); });
+    });
+    langBtn.addEventListener("click", function () {
+      docLang = docLang === "es" ? "en" : "es";
+      showTab(currentTab);
     });
     showTab(activeTab);
 
