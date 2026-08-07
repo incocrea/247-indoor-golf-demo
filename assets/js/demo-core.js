@@ -51,7 +51,7 @@
     PRICE_PEAK: 18,
     PRICE_OFF: 15,
     HOURS: (function () { var a = []; for (var h = 9; h <= 23; h++) a.push(h); return a; })(),
-    BAYS: [1, 2, 3, 4],
+    BAYS: [1, 2],
     pad: pad,
     euros: euros,
     hashCode: hashCode,

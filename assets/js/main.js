@@ -40,8 +40,8 @@
         form.appendChild(note);
       }
       note.textContent = isSpanish
-        ? "✅ (Demo) Mensaje registrado. En la versión final se enviará por correo o WhatsApp."
-        : "✅ (Demo) Message received. The final version will send it by email or WhatsApp.";
+        ? "✅ Mensaje recibido. Te responderemos muy pronto."
+        : "✅ Message received. We'll get back to you shortly.";
     });
   });
 
