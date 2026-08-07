@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>document.documentElement.className += " js";</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Membresías y tarifas — 24/7 Indoor Golf Club</title>
@@ -189,8 +190,14 @@
           </ul>
           <p style="margin-top:1.75rem"><a class="btn btn--primary" href="contacto.html">Pedir información</a></p>
         </div>
-        <div class="media-split__media">
-          <img src="../assets/img/sim-bay.svg" alt="Ilustración de una bahía de simulador de golf" width="800" height="520">
+        <div class="media-split__media" data-reveal="right">
+          <button type="button" class="shot" data-full="../assets/img/tech/coaching-compare.jpg" data-caption="Comparación de swing lado a lado con herramientas de dibujo, en cada clase">
+              <picture>
+                <source srcset="../assets/img/tech/coaching-compare.webp" type="image/webp">
+                <img src="../assets/img/tech/coaching-compare.jpg" alt="Dos vídeos de swing sincronizados lado a lado con herramientas de dibujo y líneas de plano de swing" width="756" height="606" loading="lazy" decoding="async">
+              </picture>
+              <span class="shot__zoom">Ampliar</span>
+            </button>
         </div>
       </div>
     </section>
@@ -260,6 +267,7 @@
   </footer>
 
   <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/visuals.js" defer></script>
   <script src="../assets/js/terms-content.js" defer></script>
   <script src="../assets/js/terms-gate.js" defer></script>
 </body>

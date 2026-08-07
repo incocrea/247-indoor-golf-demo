@@ -922,6 +922,261 @@ a { color: inherit; }
 }
 .btn--small { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
 
+/* ============================================================
+   Showcase de tecnología: capturas reales, parallax y reveals
+   ============================================================ */
+
+/* --- Reveal al hacer scroll (IntersectionObserver añade .is-in) ---
+   Solo se oculta si el JS está vivo (clase .js en <html>): sin JS, o si el
+   script falla, el contenido se ve siempre. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.js [data-reveal="left"] { transform: translateX(-36px); }
+.js [data-reveal="right"] { transform: translateX(36px); }
+.js [data-reveal="zoom"] { transform: scale(0.94); }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* --- Hero con imagen real de bahía + parallax --- */
+.hero { position: relative; overflow: hidden; }
+.hero__media {
+  /* El desplazamiento máximo del parallax es speed*0.5 = 17,5% de la altura,
+     así que la imagen sobresale un 20% por arriba y por abajo: nunca hay hueco. */
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  z-index: 0;
+  background-position: center 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(100deg, rgba(12, 21, 18, 0.96) 0%, rgba(12, 21, 18, 0.88) 42%, rgba(12, 21, 18, 0.55) 100%),
+    linear-gradient(to top, rgba(12, 21, 18, 0.98) 0%, rgba(12, 21, 18, 0) 45%);
+}
+.hero__pattern { z-index: 2; }
+.hero__inner { position: relative; z-index: 3; }
+.hero__title,
+.hero__claim { text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55); }
+
+/* --- Marco de captura de pantalla --- */
+.shot {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #050a08;
+  border: 1px solid rgba(242, 245, 241, 0.16);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 0 rgba(255, 255, 255, 0.06) inset;
+  line-height: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s ease, border-color 0.45s ease;
+}
+.shot img { width: 100%; height: auto; display: block; }
+/* brillo diagonal tipo cristal */
+.shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 34%);
+  opacity: 0.75;
+  transition: opacity 0.45s ease;
+}
+a.shot:hover,
+button.shot:hover {
+  transform: translateY(-6px);
+  border-color: var(--c-accent);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--c-accent),
+              0 0 40px rgba(46, 176, 92, 0.28);
+}
+a.shot:hover::after,
+button.shot:hover::after { opacity: 0.35; }
+
+/* botón-lupa sobre la captura */
+button.shot {
+  padding: 0;
+  border-width: 1px;
+  cursor: zoom-in;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+}
+.shot__zoom {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(6, 12, 9, 0.82);
+  border: 1px solid rgba(242, 245, 241, 0.22);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-family: var(--f-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--c-paper);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+button.shot:hover .shot__zoom,
+button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
+
+/* --- Filas alternas imagen / texto --- */
+.feature-row {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--c-line-dark);
+}
+.feature-row:first-of-type { border-top: 0; padding-top: 0; }
+.feature-row__num {
+  font-family: var(--f-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--c-accent-soft);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.feature-row__title {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0 0 0.85rem;
+}
+.feature-row__text { color: var(--c-paper-soft); margin: 0 0 1.25rem; }
+.metric-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.metric-chips li {
+  font-family: var(--f-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.7rem;
+  border: 1px solid var(--c-line-dark);
+  border-radius: 999px;
+  color: var(--c-paper-soft);
+}
+.metric-chips li strong { color: var(--c-accent-soft); font-weight: 600; }
+@media (min-width: 60rem) {
+  .feature-row { grid-template-columns: 1fr 1.15fr; gap: 3.5rem; }
+  .feature-row--flip > .feature-row__media { order: -1; }
+}
+
+/* --- Banda full-bleed con parallax --- */
+.parallax-band {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(20rem, 46vw, 30rem);
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+}
+.parallax-band__media {
+  position: absolute;
+  top: -18%;
+  left: 0;
+  width: 100%;
+  height: 136%;
+  z-index: -2;
+  background-position: center 45%;
+  background-size: cover;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+.parallax-band__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(12, 21, 18, 0.94) 0%, rgba(12, 21, 18, 0.72) 50%, rgba(12, 21, 18, 0.4) 100%),
+    linear-gradient(to bottom, rgba(12, 21, 18, 0.9), rgba(12, 21, 18, 0) 30%, rgba(12, 21, 18, 0.9));
+}
+.parallax-band__inner { padding-block: clamp(3rem, 8vw, 5rem); max-width: 40rem; }
+.parallax-band .section__title { text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); }
+
+/* --- Lightbox de capturas --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+  background: rgba(4, 8, 6, 0.94);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  animation: lb-in 0.28s ease;
+}
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+.lightbox img {
+  max-width: min(100%, 78rem);
+  max-height: 82vh;
+  width: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(242, 245, 241, 0.18);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+}
+.lightbox__caption {
+  color: var(--c-paper-soft);
+  font-size: var(--fs-small);
+  text-align: center;
+  max-width: 46rem;
+  margin: 0;
+}
+.lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font: inherit;
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: rgba(6, 12, 9, 0.8);
+  border: 1px solid rgba(242, 245, 241, 0.25);
+  color: var(--c-paper);
+  cursor: pointer;
+}
+.lightbox__close:hover { border-color: var(--c-accent); color: var(--c-accent-soft); }
+
+/* --- Sin animaciones si el usuario las desactiva --- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero__media,
+  .parallax-band__media { transform: none !important; }
+  .shot { transition: none; }
+}
+
 /* ---------- Modal de términos y condiciones ---------- */
 .terms-overlay {
   position: fixed;
