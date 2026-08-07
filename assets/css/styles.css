@@ -499,7 +499,7 @@ a { color: inherit; }
 }
 
 /* ---------- Precios ---------- */
-.price-card { display: flex; flex-direction: column; }
+.price-card { display: flex; flex-direction: column; position: relative; }
 .price-card__price {
   font-family: var(--f-display);
   font-size: 2.6rem;
