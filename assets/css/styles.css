@@ -955,7 +955,8 @@ a { color: inherit; }
   background-position: center 40%;
   background-size: cover;
   background-repeat: no-repeat;
-  will-change: transform;
+  /* translate3d ya promociona a capa del compositor; will-change reservaría
+     memoria de GPU durante toda la vida de la página sin ganancia. */
   transform: translate3d(0, 0, 0);
 }
 .hero__scrim {
@@ -1108,7 +1109,8 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   z-index: -2;
   background-position: center 45%;
   background-size: cover;
-  will-change: transform;
+  /* translate3d ya promociona a capa del compositor; will-change reservaría
+     memoria de GPU durante toda la vida de la página sin ganancia. */
   transform: translate3d(0, 0, 0);
 }
 .parallax-band__scrim {
@@ -1141,6 +1143,7 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   max-width: min(100%, 78rem);
   max-height: 82vh;
   width: auto;
+  height: auto;
   border-radius: 12px;
   border: 1px solid rgba(242, 245, 241, 0.18);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);

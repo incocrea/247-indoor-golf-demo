@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="preload" as="image" href="assets/img/tech/bay-tracer.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/tech/bay-tracer.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -54,7 +54,7 @@
 
     <section class="hero">
       <div class="hero__media" data-parallax="0.35" aria-hidden="true"
-           style="background-image:url('assets/img/tech/bay-tracer.jpg')"></div>
+           style="background-image:url('assets/img/tech/bay-tracer.jpg');background-image:image-set(url('assets/img/tech/bay-tracer.webp') type('image/webp'),url('assets/img/tech/bay-tracer.jpg') type('image/jpeg'))"></div>
       <div class="hero__scrim" aria-hidden="true"></div>
       <div class="hero__pattern" aria-hidden="true"></div>
       <div class="container hero__inner">
@@ -142,7 +142,7 @@
               <li>Carry <strong>121.8 yd</strong></li>
               <li>Total <strong>128.0 yd</strong></li>
               <li>Smash <strong>1.14</strong></li>
-              <li>Ball speed <strong>94.5 mph</strong></li>
+              <li>Ball speed <strong>96.1 mph</strong></li>
             </ul>
           </div>
           <div class="feature-row__media" data-reveal="left">
@@ -183,7 +183,7 @@
 
     <section class="parallax-band" id="improve">
       <div class="parallax-band__media" data-parallax="0.28" aria-hidden="true"
-           style="background-image:url('assets/img/tech/coaching-compare.jpg')"></div>
+           data-bg="assets/img/tech/coaching-compare"></div>
       <div class="parallax-band__scrim" aria-hidden="true"></div>
       <div class="container parallax-band__inner" data-reveal>
         <p class="kicker">More than a place to hit balls</p>

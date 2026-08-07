@@ -59,15 +59,20 @@
     function update() {
       ticking = false;
       var vh = window.innerHeight;
+      /* 1) leer TODAS las medidas y 2) escribir después: evita layout thrashing */
+      var reads = [];
       layers.forEach(function (layer) {
         var host = layer.parentElement || layer;
         if (visible.indexOf(host) === -1) return;
         var rect = host.getBoundingClientRect();
-        var speed = parseFloat(layer.getAttribute("data-parallax")) || 0.25;
+        reads.push({ layer: layer, top: rect.top, height: rect.height });
+      });
+      reads.forEach(function (r) {
+        var speed = parseFloat(r.layer.getAttribute("data-parallax")) || 0.25;
         /* -1 (host bajo la pantalla) .. 1 (host por encima) */
-        var progress = (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
-        var shift = -progress * speed * rect.height * 0.5;
-        layer.style.transform = "translate3d(0," + shift.toFixed(2) + "px,0)";
+        var progress = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);
+        var shift = -progress * speed * r.height * 0.5;
+        r.layer.style.transform = "translate3d(0," + shift.toFixed(2) + "px,0)";
       });
     }
     window.addEventListener("scroll", request, { passive: true });
@@ -75,7 +80,37 @@
     request();
   }
 
-  /* ---------- 3. Lightbox de capturas ---------- */
+  /* ---------- 3. Fondos con carga diferida ([data-bg]) ----------
+     Evita descargar imágenes de fondo pesadas que el visitante quizá nunca vea. */
+  var lazyBgs = [].slice.call(document.querySelectorAll("[data-bg]"));
+  if (lazyBgs.length) {
+    var canImageSet = window.CSS && CSS.supports &&
+      CSS.supports("background-image", 'image-set(url("a.webp") type("image/webp"))');
+
+    function paint(el) {
+      var base = el.getAttribute("data-bg");
+      el.style.backgroundImage = canImageSet
+        ? 'image-set(url("' + base + '.webp") type("image/webp"), url("' + base + '.jpg") type("image/jpeg"))'
+        : 'url("' + base + '.jpg")';
+      el.removeAttribute("data-bg");
+    }
+
+    if (!("IntersectionObserver" in window) || !window.innerHeight) {
+      lazyBgs.forEach(paint);
+    } else {
+      var bgio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { paint(e.target); bgio.unobserve(e.target); }
+        });
+      }, { rootMargin: "400px 0px" });
+      lazyBgs.forEach(function (el) { bgio.observe(el); });
+      window.setTimeout(function () {
+        lazyBgs.forEach(function (el) { if (el.hasAttribute("data-bg")) paint(el); });
+      }, 4000);
+    }
+  }
+
+  /* ---------- 4. Lightbox de capturas ---------- */
   var shots = document.querySelectorAll("button.shot[data-full]");
   if (shots.length) {
     var box = null, lastFocus = null;
@@ -113,7 +148,11 @@
 
     shots.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        open(btn.getAttribute("data-full"), btn.getAttribute("data-caption") || "");
+        /* Reutiliza el archivo que el navegador ya eligió y cacheó (WebP o JPEG):
+           misma resolución, cero descargas nuevas. */
+        var img = btn.querySelector("img");
+        var src = (img && img.currentSrc) || btn.getAttribute("data-full");
+        open(src, btn.getAttribute("data-caption") || "");
       });
     });
   }
