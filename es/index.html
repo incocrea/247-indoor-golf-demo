@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preload" as="image" href="../assets/img/tech/hero-course.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
   <a class="skip-link" href="#content">Saltar al contenido</a>
@@ -52,13 +53,16 @@
   <main id="content">
 
     <section class="hero">
+      <div class="hero__media" data-parallax="0.35" aria-hidden="true"
+           style="background-image:url('../assets/img/tech/hero-course.jpg');background-image:image-set(url('../assets/img/tech/hero-course.webp') type('image/webp'),url('../assets/img/tech/hero-course.jpg') type('image/jpeg'))"></div>
+      <div class="hero__scrim" aria-hidden="true"></div>
       <div class="hero__pattern" aria-hidden="true"></div>
       <div class="container hero__inner">
         <h1 class="hero__title">El golf, a <em>tu horario</em>.<br>De día o de noche.</h1>
         <p class="hero__claim">Juega los campos más famosos del mundo en simuladores de última generación. Reserva online, entra con tu móvil y disfruta de tu partida, a las 8 de la mañana o a las 2 de la madrugada. <strong>Desde $35/hora.</strong></p>
         <div class="hero__actions">
           <a class="btn btn--primary btn--lg" href="https://albaplay.com/es/venue/247-indoor-golf-club" target="_blank" rel="noopener">Reservar bahía</a>
-          <a class="btn btn--ghost btn--lg" href="membresias.html#tiers">Hazte socio</a>
+          <a class="btn btn--ghost btn--lg" href="https://albaplay.com/es/venue/247-indoor-golf-club/offers/membership" target="_blank" rel="noopener">Hazte socio</a>
         </div>
         <p class="hero__note">Sin necesidad de ser socio · Cancelación gratuita hasta 24&nbsp;h antes</p>
       </div>
@@ -183,7 +187,7 @@
         <p class="kicker">Más que un sitio donde pegar bolas</p>
         <h2 class="section__title">Practicar para mejorar de verdad</h2>
         <p class="section__lead">Mira tu swing puntuado fase a fase, comprueba cómo los números se mueven en la dirección correcta y vete sabiendo exactamente qué trabajar. Esa es la diferencia entre pegar bolas y mejorar.</p>
-        <a class="btn btn--primary btn--lg" href="membresias.html#tiers">Hazte socio</a>
+        <a class="btn btn--primary btn--lg" href="https://albaplay.com/es/venue/247-indoor-golf-club/offers/membership" target="_blank" rel="noopener">Hazte socio</a>
       </div>
     </section>
 
@@ -212,7 +216,7 @@
               <li>4 horas + 3 pases de invitado al mes</li>
               <li>Solo pre-lanzamiento + primeros 90 días</li>
             </ul>
-            <a class="btn btn--primary" href="membresias.html#tiers">Hazte Founding Member</a>
+            <a class="btn btn--primary" href="https://albaplay.com/es/venue/247-indoor-golf-club/offers/membership" target="_blank" rel="noopener">Hazte Founding Member</a>
           </article>
           <article class="card price-card">
             <h3 class="card__title">Membresías</h3>
