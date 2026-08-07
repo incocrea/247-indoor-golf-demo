@@ -115,29 +115,56 @@
   if (shots.length) {
     var box = null, lastFocus = null;
 
+    var inerted = [];
+
     function close() {
       if (!box) return;
       document.removeEventListener("keydown", onKey);
       box.remove();
       box = null;
+      /* devolver el resto de la página a la navegación por teclado */
+      inerted.forEach(function (el) { el.removeAttribute("inert"); el.removeAttribute("aria-hidden"); });
+      inerted = [];
       document.body.style.overflow = "";
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
-    function onKey(e) { if (e.key === "Escape") close(); }
 
-    function open(src, caption) {
+    function onKey(e) {
+      if (e.key === "Escape") { close(); return; }
+      /* Trampa de foco: dentro del diálogo solo hay un elemento focalizable,
+         así que el tabulador siempre vuelve a él y nunca sale por detrás. */
+      if (e.key === "Tab" && box) {
+        e.preventDefault();
+        box.querySelector(".lightbox__close").focus();
+      }
+    }
+
+    var lbSeq = 0;
+
+    function open(src, caption, alt) {
       close();
       lastFocus = document.activeElement;
+      lbSeq++;
+      var capId = "lightbox-caption-" + lbSeq;
       box = document.createElement("div");
       box.className = "lightbox";
       box.setAttribute("role", "dialog");
       box.setAttribute("aria-modal", "true");
-      box.setAttribute("aria-label", caption || (ES ? "Imagen ampliada" : "Enlarged image"));
+      if (caption) box.setAttribute("aria-labelledby", capId);
+      else box.setAttribute("aria-label", ES ? "Imagen ampliada" : "Enlarged image");
       box.innerHTML =
         '<button type="button" class="lightbox__close" aria-label="' +
         (ES ? "Cerrar" : "Close") + '">×</button>' +
-        '<img src="' + src + '" alt="' + (caption || "").replace(/"/g, "&quot;") + '">' +
-        (caption ? '<p class="lightbox__caption">' + caption + "</p>" : "");
+        '<img src="' + src + '" alt="' + (alt || caption || "").replace(/"/g, "&quot;") + '">' +
+        (caption ? '<p class="lightbox__caption" id="' + capId + '">' + caption + "</p>" : "");
+      /* el resto de la página deja de ser navegable mientras el diálogo está abierto */
+      [].slice.call(document.body.children).forEach(function (el) {
+        if (el !== box && !el.hasAttribute("inert")) {
+          el.setAttribute("inert", "");
+          el.setAttribute("aria-hidden", "true");
+          inerted.push(el);
+        }
+      });
       document.body.appendChild(box);
       document.body.style.overflow = "hidden";
       box.querySelector(".lightbox__close").addEventListener("click", close);
@@ -152,7 +179,7 @@
            misma resolución, cero descargas nuevas. */
         var img = btn.querySelector("img");
         var src = (img && img.currentSrc) || btn.getAttribute("data-full");
-        open(src, btn.getAttribute("data-caption") || "");
+        open(src, btn.getAttribute("data-caption") || "", img && img.alt);
       });
     });
   }

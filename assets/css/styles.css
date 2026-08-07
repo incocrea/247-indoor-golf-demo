@@ -14,11 +14,11 @@
   --c-ink-soft: #3d5248;       /* texto secundario sobre claro */
   --c-paper: #f2f5f1;          /* texto sobre oscuro */
   --c-paper-soft: #b7c6bc;     /* texto secundario sobre oscuro */
-  --c-accent: #2eb05c;         /* verde del logo: CTA y acentos */
-  --c-accent-strong: #249850;  /* hover CTA */
-  --c-accent-soft: #4ccd7d;    /* acento sobre fondos oscuros (texto) */
-  --c-accent-text: #1e7a40;    /* acento accesible sobre fondos claros (AA) */
-  --c-accent-ink: #06130b;     /* texto sobre acento */
+  --c-accent: #00bf63;         /* VERDE OFICIAL de marca (tomado del logo) */
+  --c-accent-strong: #00a053;  /* hover CTA */
+  --c-accent-soft: #00bf63;    /* acento sobre fondos oscuros: 7.6:1, es el oficial */
+  --c-accent-text: #00763c;    /* acento sobre fondos claros: 5.3:1 (el oficial da 2.2) */
+  --c-accent-ink: #06130b;     /* texto sobre acento: 7.8:1 */
   --c-cream: #e8dfc8;          /* detalle cálido secundario */
   --c-line-dark: rgba(242, 245, 241, 0.14);
   --c-line-light: rgba(15, 33, 24, 0.14);
@@ -77,6 +77,9 @@ a { color: inherit; }
 .stats :focus-visible,
 .cta-band :focus-visible,
 .page-head :focus-visible,
+.parallax-band :focus-visible,
+.lightbox :focus-visible,
+.terms-modal :focus-visible,
 .section--dark :focus-visible {
   outline-color: var(--c-accent-soft);
 }
@@ -208,35 +211,32 @@ a { color: inherit; }
   min-height: var(--header-h);
 }
 
-/* Lockup de marca "24/7 Indoor Golf Club" (versión texto para la cabecera) */
+/* Lockup de marca: marca oficial "24/7" + bajada tipográfica */
 .brand {
   display: inline-flex;
   flex-direction: column;
-  gap: 0.2rem;
+  align-items: flex-start;
+  gap: 0.28rem;
   text-decoration: none;
   color: inherit;
   line-height: 1;
 }
-.brand__mark {
-  font-family: var(--f-display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.55rem;
-  letter-spacing: 0.02em;
-}
-.brand__mark em {
-  font-style: italic;
-  color: var(--c-accent-soft);
-  margin: 0 0.04em;
+.brand__logo {
+  display: block;
+  width: auto;
+  height: 1.85rem;
 }
 .brand__sub {
   font-family: var(--f-display);
   font-size: 0.56rem;
   font-weight: 500;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--c-paper-soft);
+  white-space: nowrap;
 }
+/* En el pie hay sitio para el lockup oficial completo */
+.footer .brand__logo { height: 3.6rem; }
 
 /* Selector de idioma */
 .lang-switch {
@@ -1015,6 +1015,8 @@ button.shot {
   font: inherit;
   color: inherit;
 }
+/* Las capturas son de 756 px: no se estiran por encima de su tamaño nativo. */
+.shot { max-width: 47.25rem; margin-inline: auto; }
 .shot__zoom {
   position: absolute;
   right: 0.75rem;
@@ -1038,7 +1040,12 @@ button.shot {
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 button.shot:hover .shot__zoom,
+button.shot:focus .shot__zoom,
 button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
+/* En pantallas táctiles no hay hover: la pista de ampliar debe verse siempre. */
+@media (hover: none), (pointer: coarse) {
+  .shot__zoom { opacity: 1; transform: none; }
+}
 
 /* --- Filas alternas imagen / texto --- */
 .feature-row {
@@ -1117,12 +1124,22 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* Velo reforzado: la foto tiene paneles de interfaz claros que, sin él,
+     dejaban el texto por debajo del mínimo legible. */
   background:
-    linear-gradient(90deg, rgba(12, 21, 18, 0.94) 0%, rgba(12, 21, 18, 0.72) 50%, rgba(12, 21, 18, 0.4) 100%),
-    linear-gradient(to bottom, rgba(12, 21, 18, 0.9), rgba(12, 21, 18, 0) 30%, rgba(12, 21, 18, 0.9));
+    linear-gradient(90deg, rgba(12, 21, 18, 0.95) 0%, rgba(12, 21, 18, 0.9) 50%, rgba(12, 21, 18, 0.82) 100%),
+    linear-gradient(to bottom, rgba(12, 21, 18, 0.92), rgba(12, 21, 18, 0.35) 40%, rgba(12, 21, 18, 0.92));
 }
-.parallax-band__inner { padding-block: clamp(3rem, 8vw, 5rem); max-width: 40rem; }
-.parallax-band .section__title { text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); }
+/* La banda es OSCURA: sin esto hereda los colores pensados para fondo claro
+   (--c-ink sobre casi negro = ilegible). */
+.parallax-band { color: var(--c-paper); }
+.parallax-band .kicker { color: var(--c-accent-soft); }
+.parallax-band .section__lead { color: var(--c-paper-soft); }
+/* El contenedor conserva el ancho del grid; solo se limita la medida del texto,
+   para que la banda quede alineada con el resto de secciones. */
+.parallax-band__inner { padding-block: clamp(3rem, 8vw, 5rem); }
+.parallax-band__inner > * { max-width: 40rem; }
+.parallax-band .section__title { text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6); }
 
 /* --- Lightbox de capturas --- */
 .lightbox {
@@ -1171,6 +1188,18 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   cursor: pointer;
 }
 .lightbox__close:hover { border-color: var(--c-accent); color: var(--c-accent-soft); }
+
+/* En pantallas anchas las capturas de fondo (756 px de origen) se amplían mucho:
+   un desenfoque leve hace que la blandura se lea como profundidad de campo
+   intencionada. El margen extra evita que se vean los bordes difuminados. */
+@media (min-width: 60rem) {
+  .hero__media,
+  .parallax-band__media {
+    left: -2%;
+    width: 104%;
+    filter: blur(2px);
+  }
+}
 
 /* --- Sin animaciones si el usuario las desactiva --- */
 @media (prefers-reduced-motion: reduce) {
