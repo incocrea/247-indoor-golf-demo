@@ -537,6 +537,29 @@ a { color: inherit; }
   border: 2px solid var(--c-accent);
   position: relative;
 }
+
+/* Distintivo sobrio para los planes que aún no están disponibles.
+   Doble clase: la regla base .price-card__flag se declara después y, a igual
+   especificidad, ganaría por orden dejando el texto oscuro sobre verde. */
+.price-card__flag.price-card__flag--soon {
+  background: rgba(242, 245, 241, 0.14);
+  color: var(--c-paper);
+  border: 1px solid rgba(242, 245, 241, 0.36);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-weight: 500;
+}
+.price-card--soon .price-card__price,
+.price-card--soon .card__title { opacity: 0.92; }
+/* El boton de alta queda inactivo mientras el plan no este a la venta */
+.btn--soon {
+  border-color: rgba(242, 245, 241, 0.3);
+  color: var(--c-paper-soft);
+  background: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+.btn--soon:hover { transform: none; }
 .price-card__flag {
   position: absolute;
   top: -0.9rem;
