@@ -19,11 +19,10 @@
     ? {
         sending: "Enviando…",
         submit: "Unirme a la lista prioritaria",
-        errRequired: "Revisa los campos marcados: faltan datos o hay algún error.",
-        errEmail: "Ese email no parece válido.",
-        errPhone: "Ese teléfono no parece válido: usa al menos 10 dígitos.",
-        errZip: "El código postal debe tener 5 dígitos (p. ej. 76179).",
-        errConsent: "Para apuntarte necesitamos que aceptes los términos y el uso de tus datos.",
+        errFill: "Rellena este campo para continuar.",
+        errPick: "Elige una opción para continuar.",
+        errEmail: "Ese email no parece válido: revisa que tenga el formato nombre@dominio.com.",
+        errConsent: "Marca esta casilla para poder apuntarte: es tu permiso para avisarte por email.",
         errNet: "No se pudo enviar. Inténtalo de nuevo en un momento o escríbenos a info@247indoorgolfclub.com.",
         shareTitle: "24/7 Indoor Golf Club — Priority Waitlist",
         shareJoined: "Acabo de apuntarme a la lista prioritaria de 24/7 Indoor Golf Club: golf indoor en simuladores en Fort Worth, abierto 24/7. Apúntate tú también:",
@@ -37,11 +36,10 @@
     : {
         sending: "Sending…",
         submit: "Join the Priority Waitlist",
-        errRequired: "Please review the highlighted fields — something is missing or invalid.",
-        errEmail: "That email address doesn't look right.",
-        errPhone: "That phone number doesn't look right — use at least 10 digits.",
-        errZip: "ZIP code should be 5 digits (e.g. 76179).",
-        errConsent: "To join, please accept the terms and the use of your data.",
+        errFill: "Please fill in this field to continue.",
+        errPick: "Please choose an option to continue.",
+        errEmail: "That email doesn't look right — check it follows name@domain.com.",
+        errConsent: "Please check this box to join — it's your permission for us to email you.",
         errNet: "We couldn't send your signup. Try again in a moment, or email info@247indoorgolfclub.com.",
         shareTitle: "24/7 Indoor Golf Club — Priority Waitlist",
         shareJoined: "I just joined the Priority Waitlist for 24/7 Indoor Golf Club — indoor golf on pro simulators in Fort Worth, open 24/7. Join me:",
@@ -95,10 +93,7 @@
         navigator.share({ title: T.shareTitle, text: text, url: shareUrl("native", withRef) }).catch(function () {});
       });
     }
-    var wa = btn("WhatsApp", "a");
-    wa.href = "https://wa.me/?text=" + encodeURIComponent(text + " " + shareUrl("whatsapp", withRef));
-    wa.target = "_blank";
-    wa.rel = "noopener";
+    /* orden pedido por el cliente: WhatsApp al final (poco usado en su mercado) */
     var mail = btn("Email", "a");
     mail.href = "mailto:?subject=" + encodeURIComponent(T.shareTitle) + "&body=" + encodeURIComponent(text + "\n\n" + shareUrl("email", withRef));
     var cp = btn(T.copy);
@@ -135,6 +130,10 @@
         if (okCopy) done(); else failCopy();
       }
     });
+    var wa = btn("WhatsApp", "a");
+    wa.href = "https://wa.me/?text=" + encodeURIComponent(text + " " + shareUrl("whatsapp", withRef));
+    wa.target = "_blank";
+    wa.rel = "noopener";
   }
 
   /* filas de compartir de la propia página (antes de registrarse) */
@@ -179,11 +178,25 @@
     feedback.textContent = "⚠️ " + msg;
     if (!el) return;
     markInvalid(el, true);
+    var isCtl = el.matches && el.matches("input,select,textarea");
+    var ctl = isCtl ? el : el.querySelector("input");
+    /* el motivo exacto, PEGADO al campo que falla: el aviso de abajo queda fuera
+       de pantalla cuando el foco sube al campo, y "solo rojo" no explica nada */
+    var box = isCtl ? el.closest("label") : el;
+    if (box) {
+      var err = box.querySelector(".field-error");
+      if (!err) {
+        err = document.createElement("span");
+        err.className = "field-error";
+        err.id = "wl-err-" + ((ctl && ctl.name) || "campo");
+        box.appendChild(err);
+      }
+      err.textContent = "⚠️ " + msg;
+    }
     /* el foco va siempre a un control real (un contenedor sin tabindex es un no-op) */
-    var ctl = el.matches && el.matches("input,select,textarea") ? el : el.querySelector("input");
     if (ctl) {
       ctl.setAttribute("aria-invalid", "true");
-      ctl.setAttribute("aria-describedby", feedback.id);
+      ctl.setAttribute("aria-describedby", (box && box.querySelector(".field-error")) ? box.querySelector(".field-error").id : feedback.id);
       ctl.focus();
     }
   }
@@ -207,6 +220,7 @@
     if (submitBtn.disabled) return; // envío ya en curso
     feedback.textContent = "";
     form.querySelectorAll(".is-invalid").forEach(function (el) { el.classList.remove("is-invalid"); });
+    form.querySelectorAll(".field-error").forEach(function (el) { el.remove(); });
     form.querySelectorAll("[aria-invalid]").forEach(function (el) {
       el.removeAttribute("aria-invalid");
       el.removeAttribute("aria-describedby");
@@ -221,12 +235,15 @@
     var consentTerms = form.consent_terms.checked;
     var consentSms = form.consent_sms.checked;
 
-    if (!name) return fail(T.errRequired, form.name);
+    /* Solo lo imprescindible: campos no vacíos y un email con pinta de email.
+       Sin reglas de formato en teléfono ni ZIP (petición del cliente): mejor
+       una fila con un dato imperfecto que un interesado que se rinde. */
+    if (!name) return fail(T.errFill, form.name);
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail(T.errEmail, form.email);
-    if (phone.replace(/\D/g, "").length < 10 || phone.replace(/\D/g, "").length > 15) return fail(T.errPhone, form.phone);
-    if (!/^\d{5}(-\d{4})?$/.test(zip)) return fail(T.errZip, form.zip);
-    if (!interest) return fail(T.errRequired, form.querySelector("[data-fs-interest]"));
-    if (!heard) return fail(T.errRequired, form.querySelector("[data-fs-heard]"));
+    if (!phone) return fail(T.errFill, form.phone);
+    if (!zip) return fail(T.errFill, form.zip);
+    if (!interest) return fail(T.errPick, form.querySelector("[data-fs-interest]"));
+    if (!heard) return fail(T.errPick, form.querySelector("[data-fs-heard]"));
     if (!consentTerms) return fail(T.errConsent, form.querySelector(".consent-box"));
 
     var myRef = storedRef() || makeRefCode();
