@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Join the Priority Waitlist — 24/7 Indoor Golf Club</title>
   <meta name="description" content="Free to join, zero commitment: early booking access, Founding Member pricing, private preview invites and exclusive launch offers. Indoor golf, open 24/7 in Fort Worth, TX.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="24/7 Indoor Golf Club">
+  <meta property="og:title" content="Join the Priority Waitlist — 24/7 Indoor Golf Club">
+  <meta property="og:description" content="Free to join, zero commitment: early booking access, Founding Member pricing, private preview invites and exclusive launch offers. Indoor golf, open 24/7 in Fort Worth, TX.">
+  <meta property="og:url" content="https://www.247indoorgolfclub.com/waitlist.html">
+  <meta property="og:image" content="https://www.247indoorgolfclub.com/assets/img/tech/hero-course.jpg">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="alternate" hreflang="en" href="waitlist.html">
   <link rel="alternate" hreflang="es" href="es/lista-espera.html">
   <link rel="alternate" hreflang="x-default" href="waitlist.html">
@@ -15,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preload" as="image" href="assets/img/tech/hero-course.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -51,24 +62,63 @@
 
   <main id="content">
 
-    <section class="page-head">
-      <div class="container">
-        <p class="kicker">Priority Waitlist</p>
-        <h1 class="page-head__title">Join the waitlist!</h1>
-        <p class="page-head__lead">24/7 indoor golf is coming to Fort Worth &mdash; and the first tee times, the best membership price and the private preview nights go to the people on this list. <strong>Free to join, zero commitment:</strong> we just want to know you're interested so we can tell you first.</p>
+    <section class="hero">
+      <div class="hero__media" data-parallax="0.35" aria-hidden="true"
+           style="background-image:url('assets/img/tech/hero-course.jpg');background-image:image-set(url('assets/img/tech/hero-course.webp') type('image/webp'),url('assets/img/tech/hero-course.jpg') type('image/jpeg'))"></div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__pattern" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="kicker">Priority Waitlist &middot; Fort Worth, TX</p>
+        <h1 class="hero__title">Join the <em>waitlist!</em></h1>
+        <p class="hero__claim">Indoor golf on pro-grade simulators, open 24/7, is coming to Fort Worth. The first tee times, the Founding price and the private preview nights go to the people on this list. <strong>Free, zero commitment</strong> &mdash; we just want to be able to tell you first.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="#signup">Save my spot &mdash; free</a>
+          <a class="btn btn--ghost btn--lg" href="#why">See what's coming</a>
+        </div>
+        <p class="hero__note">No payment &middot; No commitment &middot; Only 60 Founding spots</p>
       </div>
     </section>
 
-    <section class="section section--white">
-      <div class="container media-split" style="align-items:start">
+    <section class="section section--dark" id="why">
+      <div class="container media-split">
         <div>
-          <h2 class="section__title" style="font-size:var(--fs-h3)">What you get</h2>
-          <ul class="price-card__list" style="margin-top:1.25rem">
+          <p class="kicker">What's coming</p>
+          <h2 class="section__title">Tour-grade golf, any hour you like</h2>
+          <p class="section__lead">Every bay pairs the <strong>Uneekor EYE XO2</strong> launch monitor with <strong>GSPro</strong>: thousands of world-famous courses, full ball and club data, and doors that open with your phone &mdash; at 6 in the morning or 2 at night.</p>
+          <ul class="price-card__list">
             <li>⛳ <strong>Early access to booking</strong> &mdash; pick your tee times before the doors open</li>
             <li>🏷️ <strong>Founding Member pricing</strong> &mdash; $79.99/month, rate locked while your membership stays active. Only 60 spots</li>
             <li>🎟️ <strong>Invitations to private preview &amp; demo sessions</strong></li>
             <li>📣 <strong>Opening updates and exclusive launch offers</strong></li>
           </ul>
+          <p style="margin-top:1.75rem"><a class="btn btn--primary" href="#signup">Join the waitlist</a></p>
+        </div>
+        <div class="media-split__media" data-reveal="right">
+          <button type="button" class="shot" data-full="assets/img/tech/courses-tablet.jpg" data-caption="Play world-famous courses and review every shot of your session">
+            <picture>
+              <source srcset="assets/img/tech/courses-tablet.webp" type="image/webp">
+              <img src="assets/img/tech/courses-tablet.jpg" alt="Tablet showing a golf course in the simulator software alongside a shot-by-shot session panel with carry distance, smash factor and spin rate" width="1457" height="1079" loading="lazy" decoding="async">
+            </picture>
+            <span class="shot__zoom">Zoom</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white" id="signup">
+      <div class="container media-split" style="align-items:start">
+        <div>
+          <h2 class="section__title" style="font-size:var(--fs-h3)">Your coach, built in</h2>
+          <p class="section__lead" style="margin-bottom:1.25rem">AI swing analysis scores every phase of your swing and shows you the fix &mdash; included with every bay.</p>
+          <div data-reveal="left" style="margin-bottom:1.5rem">
+            <button type="button" class="shot" data-full="assets/img/tech/swing-ai.jpg" data-caption="AI swing analysis: every phase scored, every fault explained">
+              <picture>
+                <source srcset="assets/img/tech/swing-ai.webp" type="image/webp">
+                <img src="assets/img/tech/swing-ai.jpg" alt="AI swing analysis screen with each swing phase scored and a side-by-side correction" width="1448" height="1086" loading="lazy" decoding="async">
+              </picture>
+              <span class="shot__zoom">Zoom</span>
+            </button>
+          </div>
           <div class="waitlist-reassure">
             <p><strong>No payment. No commitment.</strong> Joining simply puts you first in line when memberships and preview sessions open &mdash; and you can unsubscribe anytime.</p>
           </div>
@@ -79,7 +129,7 @@
           </div>
         </div>
         <div>
-          <form class="form waitlist-form" method="post" data-waitlist data-endpoint="">
+          <form class="form waitlist-form" method="post" data-waitlist data-endpoint="https://script.google.com/macros/s/AKfycbx4EIWZBE8Q4jOf73DtIu-vqxp1aDbSt2Zz9ClIqBJuxw7IDC0yB52LR_UeKV4mgnNC/exec">
             <h2 class="section__title" style="font-size:var(--fs-h3);margin:0">Save my spot</h2>
             <label>Full name
               <input type="text" name="name" autocomplete="name" required maxlength="120">

@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Únete a la lista de espera prioritaria — 24/7 Indoor Golf Club</title>
   <meta name="description" content="Apuntarse es gratis y sin compromiso: acceso anticipado a reservas, precio de Founding Member, invitaciones a sesiones privadas y ofertas exclusivas de lanzamiento. Golf indoor 24/7 en Fort Worth, TX.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="24/7 Indoor Golf Club">
+  <meta property="og:title" content="Únete a la lista de espera prioritaria — 24/7 Indoor Golf Club">
+  <meta property="og:description" content="Apuntarse es gratis y sin compromiso: acceso anticipado a reservas, precio de Founding Member, invitaciones a sesiones privadas y ofertas exclusivas de lanzamiento. Golf indoor 24/7 en Fort Worth, TX.">
+  <meta property="og:url" content="https://www.247indoorgolfclub.com/es/lista-espera.html">
+  <meta property="og:image" content="https://www.247indoorgolfclub.com/assets/img/tech/hero-course.jpg">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:locale" content="es_US">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="alternate" hreflang="en" href="../waitlist.html">
   <link rel="alternate" hreflang="es" href="lista-espera.html">
   <link rel="alternate" hreflang="x-default" href="../waitlist.html">
@@ -15,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preload" as="image" href="../assets/img/tech/hero-course.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
   <a class="skip-link" href="#content">Saltar al contenido</a>
@@ -51,24 +62,63 @@
 
   <main id="content">
 
-    <section class="page-head">
-      <div class="container">
-        <p class="kicker">Lista de espera prioritaria</p>
-        <h1 class="page-head__title">¡Únete a la lista!</h1>
-        <p class="page-head__lead">El golf indoor 24/7 llega a Fort Worth &mdash; y los primeros horarios, el mejor precio de membresía y las noches de preview privadas serán para quienes estén en esta lista. <strong>Apuntarse es gratis y sin ningún compromiso:</strong> solo queremos saber que te interesa para avisarte antes que a nadie.</p>
+    <section class="hero">
+      <div class="hero__media" data-parallax="0.35" aria-hidden="true"
+           style="background-image:url('../assets/img/tech/hero-course.jpg');background-image:image-set(url('../assets/img/tech/hero-course.webp') type('image/webp'),url('../assets/img/tech/hero-course.jpg') type('image/jpeg'))"></div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__pattern" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="kicker">Lista de espera prioritaria &middot; Fort Worth, TX</p>
+        <h1 class="hero__title">¡Únete a <em>la lista!</em></h1>
+        <p class="hero__claim">El golf indoor en simuladores de nivel profesional, abierto 24/7, llega a Fort Worth. Los primeros horarios, el precio Founding y las noches de preview privadas serán para quienes estén en esta lista. <strong>Gratis y sin compromiso</strong> &mdash; solo queremos poder avisarte primero.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="#signup">Guárdame el sitio &mdash; gratis</a>
+          <a class="btn btn--ghost btn--lg" href="#why">Mira lo que viene</a>
+        </div>
+        <p class="hero__note">Sin pagos &middot; Sin compromiso &middot; Solo 60 plazas Founding</p>
       </div>
     </section>
 
-    <section class="section section--white">
-      <div class="container media-split" style="align-items:start">
+    <section class="section section--dark" id="why">
+      <div class="container media-split">
         <div>
-          <h2 class="section__title" style="font-size:var(--fs-h3)">Qué consigues</h2>
-          <ul class="price-card__list" style="margin-top:1.25rem">
+          <p class="kicker">Lo que viene</p>
+          <h2 class="section__title">Golf de nivel tour, a la hora que quieras</h2>
+          <p class="section__lead">Cada bahía combina el monitor de lanzamiento <strong>Uneekor EYE XO2</strong> con <strong>GSPro</strong>: miles de campos famosos de todo el mundo, datos completos de bola y palo, y puertas que se abren con tu móvil &mdash; a las 6 de la mañana o a las 2 de la madrugada.</p>
+          <ul class="price-card__list">
             <li>⛳ <strong>Acceso anticipado a las reservas</strong> &mdash; elige tus horarios antes de que abramos las puertas</li>
             <li>🏷️ <strong>Precio de Founding Member</strong> &mdash; $79.99/mes con tarifa congelada mientras tu membresía siga activa. Solo 60 plazas</li>
             <li>🎟️ <strong>Invitaciones a sesiones privadas de preview y demo</strong></li>
             <li>📣 <strong>Novedades de la apertura y ofertas exclusivas de lanzamiento</strong></li>
           </ul>
+          <p style="margin-top:1.75rem"><a class="btn btn--primary" href="#signup">Únete a la lista</a></p>
+        </div>
+        <div class="media-split__media" data-reveal="right">
+          <button type="button" class="shot" data-full="../assets/img/tech/courses-tablet.jpg" data-caption="Juega campos famosos y revisa cada golpe de tu sesión">
+            <picture>
+              <source srcset="../assets/img/tech/courses-tablet.webp" type="image/webp">
+              <img src="../assets/img/tech/courses-tablet.jpg" alt="Tablet con un campo de golf en el software del simulador junto a un panel de sesión golpe a golpe con carry, smash factor y spin rate" width="1457" height="1079" loading="lazy" decoding="async">
+            </picture>
+            <span class="shot__zoom">Zoom</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white" id="signup">
+      <div class="container media-split" style="align-items:start">
+        <div>
+          <h2 class="section__title" style="font-size:var(--fs-h3)">Tu entrenador, de serie</h2>
+          <p class="section__lead" style="margin-bottom:1.25rem">El análisis de swing con IA puntúa cada fase de tu swing y te enseña la corrección &mdash; incluido en todas las bahías.</p>
+          <div data-reveal="left" style="margin-bottom:1.5rem">
+            <button type="button" class="shot" data-full="../assets/img/tech/swing-ai.jpg" data-caption="Análisis de swing con IA: cada fase puntuada, cada fallo explicado">
+              <picture>
+                <source srcset="../assets/img/tech/swing-ai.webp" type="image/webp">
+                <img src="../assets/img/tech/swing-ai.jpg" alt="Pantalla de análisis de swing con IA con cada fase puntuada y la corrección lado a lado" width="1448" height="1086" loading="lazy" decoding="async">
+              </picture>
+              <span class="shot__zoom">Zoom</span>
+            </button>
+          </div>
           <div class="waitlist-reassure">
             <p><strong>Sin pagos. Sin compromiso.</strong> Apuntarte solo te pone el primero de la fila cuando abran las membresías y las sesiones de preview &mdash; y puedes darte de baja cuando quieras.</p>
           </div>
@@ -79,7 +129,7 @@
           </div>
         </div>
         <div>
-          <form class="form waitlist-form" method="post" data-waitlist data-endpoint="">
+          <form class="form waitlist-form" method="post" data-waitlist data-endpoint="https://script.google.com/macros/s/AKfycbx4EIWZBE8Q4jOf73DtIu-vqxp1aDbSt2Zz9ClIqBJuxw7IDC0yB52LR_UeKV4mgnNC/exec">
             <h2 class="section__title" style="font-size:var(--fs-h3);margin:0">Guárdame el sitio</h2>
             <label>Nombre completo
               <input type="text" name="name" autocomplete="name" required maxlength="120">
