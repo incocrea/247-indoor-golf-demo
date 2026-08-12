@@ -131,6 +131,16 @@
     overlay.addEventListener("click", function (e) { if (e.target === overlay) destroyModal(); });
     document.addEventListener("keydown", escHandler);
 
+    /* trampa de foco: aria-modal exige que Tab no se escape del diálogo */
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var f = overlay.querySelectorAll("button:not([hidden]), [href], input, [tabindex]:not([tabindex='-1'])");
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
     var check = overlay.querySelector(".terms-check input");
     var acceptBtn = overlay.querySelector("[data-accept]");
     var cancelBtn = overlay.querySelector("[data-cancel]");
@@ -172,6 +182,15 @@
       buildModal("terms", a.href);
     }
   }, true);
+
+  /* Cualquier enlace con data-terms-open="terms|privacy|facility" abre el modal
+     en modo consulta (lo usa el consentimiento del formulario de la waitlist) */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("[data-terms-open]") : null;
+    if (!a) return;
+    e.preventDefault();
+    buildModal(a.getAttribute("data-terms-open") || "terms", null);
+  });
 
   /* Enlaces legales del footer abren el modal en el documento correspondiente */
   var LEGAL_MAP = [
