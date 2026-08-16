@@ -46,6 +46,11 @@
 *::before,
 *::after { box-sizing: border-box; }
 
+/* El atributo hidden debe ganar SIEMPRE: la regla del navegador
+   ([hidden]{display:none}) pierde por especificidad frente a cualquier clase
+   que declare display (le pasó a .form, que se quedaba visible al enviarse). */
+[hidden] { display: none !important; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 1rem);
@@ -1000,6 +1005,13 @@ a { color: inherit; }
 .js [data-reveal="right"] { transform: translateX(36px); }
 .js [data-reveal="zoom"] { transform: scale(0.94); }
 .js [data-reveal].is-in { opacity: 1; transform: none; }
+/* En móvil los bloques ocupan todo el ancho: desplazarlos en horizontal los
+   saca de la pantalla y provoca scroll lateral hasta que se revelan. Ahí la
+   entrada es vertical, que no desborda. */
+@media (max-width: 47.9375rem) {
+  .js [data-reveal="left"],
+  .js [data-reveal="right"] { transform: translateY(28px); }
+}
 
 /* --- Hero con imagen real de bahía + parallax --- */
 .hero { position: relative; overflow: hidden; }
@@ -1490,3 +1502,12 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
   font-size: var(--fs-small);
   font-weight: 600;
 }
+/* Zona de registro: columna única centrada (el formulario manda en la página) */
+.waitlist-signup {
+  max-width: 42rem;
+  margin-inline: auto;
+  display: grid;
+  gap: 1.5rem;
+}
+.waitlist-signup .waitlist-reassure { margin-top: 0; }
+.waitlist-signup .form { max-width: none; }

@@ -18,6 +18,7 @@
   var T = ES
     ? {
         sending: "Enviando…",
+        sent: "✓ Enviado",
         submit: "Unirme a la lista prioritaria",
         errFill: "Rellena este campo para continuar.",
         errPick: "Elige una opción para continuar.",
@@ -35,6 +36,7 @@
       }
     : {
         sending: "Sending…",
+        sent: "✓ Sent",
         submit: "Join the Priority Waitlist",
         errFill: "Please fill in this field to continue.",
         errPick: "Please choose an option to continue.",
@@ -283,6 +285,9 @@
 
     function onSuccess(isDemo) {
       try { localStorage.setItem("waitlist247.ref", myRef); } catch (e) {}
+      /* el botón queda como constancia de que ya se envió, y bloqueado */
+      submitBtn.textContent = T.sent;
+      submitBtn.disabled = true;
       var row = success.querySelector("[data-share-row-success]");
       if (row) buildShareRow(row, T.shareJoined, true);
       if (isDemo && !success.querySelector(".waitlist-demo-note")) {
