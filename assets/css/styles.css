@@ -1511,3 +1511,6 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
 }
 .waitlist-signup .waitlist-reassure { margin-top: 0; }
 .waitlist-signup .form { max-width: none; }
+/* CTA de acceso anticipado a Founding, bajo el texto/botón del hero */
+.hero__actions--stack { flex-direction: column; align-items: flex-start; }
+.hero__founding { margin-top: 1.25rem; }
