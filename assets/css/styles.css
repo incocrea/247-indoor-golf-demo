@@ -1206,7 +1206,9 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 320;
+  /* Por encima del widget de chat de terceros (se inyecta con z-index
+     99999999): ni la galeria ni el modal legal pueden quedar tapados. */
+  z-index: 2147483001;
   background: rgba(4, 8, 6, 0.94);
   display: flex;
   flex-direction: column;
@@ -1261,7 +1263,8 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
 .terms-overlay {
   position: fixed;
   inset: 0;
-  z-index: 300;
+  /* Por encima del widget de chat: es un consentimiento obligatorio. */
+  z-index: 2147483000;
   background: rgba(6, 12, 9, 0.8);
   display: flex;
   align-items: center;
