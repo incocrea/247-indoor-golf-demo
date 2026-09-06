@@ -285,6 +285,12 @@
 
     function onSuccess(isDemo) {
       try { localStorage.setItem("waitlist247.ref", myRef); } catch (e) {}
+      /* Conversion para Meta: sin este evento el pixel solo mide visitas y los
+         anuncios no pueden optimizar hacia quien se apunta de verdad. No se
+         envia ningun dato personal, solo el nombre de la conversion. */
+      if (!isDemo && typeof window.fbq === "function") {
+        try { window.fbq("track", "Lead", { content_name: "Priority Waitlist" }); } catch (e) {}
+      }
       /* el botón queda como constancia de que ya se envió, y bloqueado */
       submitBtn.textContent = T.sent;
       submitBtn.disabled = true;
