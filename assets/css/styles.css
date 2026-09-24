@@ -1517,3 +1517,11 @@ button.shot:focus-visible .shot__zoom { opacity: 1; transform: none; }
 /* CTA de acceso anticipado a Founding, bajo el texto/botón del hero */
 .hero__actions--stack { flex-direction: column; align-items: flex-start; }
 .hero__founding { margin-top: 1.25rem; }
+/* Formularios embebidos del CRM del cliente (iframes de LeadConnector) */
+.form-embed {
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 1.25rem;
+}
+.form-embed iframe { display: block; width: 100%; }
+.form-embed--waitlist { max-width: none; margin-top: 0; }

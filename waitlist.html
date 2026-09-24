@@ -101,60 +101,30 @@
           </div>
         </div>
         <div>
-          <form class="form waitlist-form" method="post" data-waitlist data-endpoint="https://script.google.com/macros/s/AKfycbx4EIWZBE8Q4jOf73DtIu-vqxp1aDbSt2Zz9ClIqBJuxw7IDC0yB52LR_UeKV4mgnNC/exec">
-            <h2 class="section__title" style="font-size:var(--fs-h3);margin:0">Save my spot</h2>
-            <label>Full name
-              <input type="text" name="name" autocomplete="name" required maxlength="120">
-            </label>
-            <label>Email
-              <input type="email" name="email" autocomplete="email" required maxlength="160">
-            </label>
-            <label>Phone
-              <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="24">
-            </label>
-            <label>ZIP code
-              <input type="text" name="zip" autocomplete="postal-code" inputmode="numeric" required maxlength="10" placeholder="76179">
-            </label>
-            <fieldset class="form-choice" data-fs-interest>
-              <legend>What are you most interested in?</legend>
-              <label class="choice"><input type="radio" name="interest" value="busy_schedule" required> <span>Golf on a busy schedule</span></label>
-              <label class="choice"><input type="radio" name="interest" value="practice" required> <span>Practice and improve</span></label>
-              <label class="choice"><input type="radio" name="interest" value="friends" required> <span>Have fun with friends</span></label>
-              <label class="choice"><input type="radio" name="interest" value="lessons" required> <span>Take golf lessons</span></label>
-              <label class="choice"><input type="radio" name="interest" value="other" required> <span>Other</span></label>
-              <input type="text" name="interest_other" class="choice-other" maxlength="140" hidden aria-label="Tell us more">
-            </fieldset>
-            <fieldset class="form-choice" data-fs-heard>
-              <legend>How did you hear about us?</legend>
-              <label class="choice"><input type="radio" name="heard" value="facebook" required> <span>Facebook</span></label>
-              <label class="choice"><input type="radio" name="heard" value="tiktok" required> <span>TikTok</span></label>
-              <label class="choice"><input type="radio" name="heard" value="instagram" required> <span>Instagram</span></label>
-              <label class="choice"><input type="radio" name="heard" value="google" required> <span>Google</span></label>
-              <label class="choice"><input type="radio" name="heard" value="friend" required> <span>A friend</span></label>
-              <label class="choice"><input type="radio" name="heard" value="other" required> <span>Other</span></label>
-              <input type="text" name="heard_other" class="choice-other" maxlength="140" hidden aria-label="Tell us more">
-            </fieldset>
-            <div class="consent-box">
-              <label class="choice choice--consent">
-                <input type="checkbox" name="consent_terms" required>
-                <span>I have read and accept the <a href="#" data-terms-open="privacy">Privacy Policy</a>, and I'd like to receive emails from 24/7 Indoor Golf Club about the waitlist, the opening and launch offers. <strong>No commitment</strong> &mdash; we use your details to keep you posted and manage your spot on the list, and you can unsubscribe anytime. If you leave a phone number we may call you about your spot; marketing texts only if you opt in below.</span>
-              </label>
-              <label class="choice choice--consent">
-                <input type="checkbox" name="consent_sms">
-                <span><strong>Optional &mdash; text or call me:</strong> I agree to receive recurring marketing text messages and calls from 24/7 Indoor Golf Club at the number provided, which may be sent using automated technology. Consent is not a condition of any purchase. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
-              </label>
-            </div>
-            <div class="visually-hidden" aria-hidden="true">
-              <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-            </div>
-            <button class="btn btn--primary btn--lg" type="submit">Join the Priority Waitlist</button>
-            <p class="form__note form__feedback" role="status"></p>
-          </form>
-          <div class="waitlist-success" data-waitlist-success hidden>
-            <h2 class="section__title" style="font-size:var(--fs-h3)">You're on the list! ⛳</h2>
-            <p>That's it &mdash; no payment, no commitment. We'll email you before anyone else when preview sessions and the 60 Founding spots open.</p>
-            <p style="margin-top:1rem"><strong>Bring your crew up the list with you &mdash; share it:</strong></p>
-            <div class="share-row" data-share-row-success style="margin-top:0.75rem"></div>
+          <h2 class="section__title" style="font-size:var(--fs-h3)">Save my spot</h2>
+          <div class="form-embed form-embed--waitlist">
+            <iframe src="https://link.azulscale.com/widget/form/DW8SQwASw7OqUR2ALZGe"
+                    style="width:100%;height:1196px;border:none;border-radius:8px"
+                    id="inline-DW8SQwASw7OqUR2ALZGe"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Waitlist"
+                    data-height="1196"
+                    data-layout-iframe-id="inline-DW8SQwASw7OqUR2ALZGe"
+                    data-form-id="DW8SQwASw7OqUR2ALZGe"
+                    data-cookie-consent="true"
+                    data-cookie-consent-provider="auto"
+                    title="Waitlist"></iframe>
+          </div>
+          <div class="waitlist-share">
+            <h2 class="section__title" style="font-size:var(--fs-h3)">You're in? Bring your crew with you</h2>
+            <p class="form__note" style="margin-bottom:0.75rem">Send them the waitlist &mdash; golf is better with your people.</p>
+            <div class="share-row" data-share-row></div>
           </div>
         </div>
       </div>
@@ -243,6 +213,7 @@
   <script src="assets/js/terms-gate.js" defer></script>
   <script src="assets/js/attribution.js" defer></script>
   <script src="assets/js/waitlist.js" defer></script>
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a9a551b98f3179f2e0e0444" data-source="WEB_USER"></script>
+  <script src="https://link.azulscale.com/js/form_embed.js" defer></script>
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a9e43b598f3179f2ececb62"></script>
 </body>
 </html>
